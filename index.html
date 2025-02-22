@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Here Care - Premium Organic Hair Oil</title>
+    <title>Hair Care </title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
         :root {
@@ -25,111 +25,135 @@
             overflow-x: hidden;
         }
         
-        /* Animation Background */
-        .animated-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.05;
-            overflow: hidden;
-        }
-        
-        .animated-bg::before {
-            content: '';
-            position: absolute;
-            width: 300%;
-            height: 300%;
-            top: -100%;
-            left: -100%;
-            background: 
-                radial-gradient(circle at 30% 40%, rgba(255, 215, 0, 0.3) 0%, transparent 40%),
-                radial-gradient(circle at 70% 60%, rgba(255, 215, 0, 0.2) 0%, transparent 30%);
-            animation: rotate 60s linear infinite;
-        }
-        
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
         
         /* Navigation */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 5%;
+ /* Enhanced Navigation */
+ nav {
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            background-color: rgba(54, 69, 79, 0.9);
+            background: rgba(54, 69, 79, 0.95);
             backdrop-filter: blur(10px);
+            padding: 0.8rem 5%;
+            border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         }
-        
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Updated Logo Style */
         .logo {
             display: flex;
             align-items: center;
+            gap: 15px;
         }
-        
-        .logo h1 {
-            color: var(--gold);
-            font-size: 1.8rem;
-            margin-left: 10px;
+
+        .logo-main {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        
+
         .logo-circle {
             width: 50px;
             height: 50px;
-            border-radius: 50%;
-            background-color: var(--dark-gray);
+            background: linear-gradient(135deg, var(--dark-gray), #1a242f);
             border: 2px solid var(--gold);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--gold);
             font-weight: bold;
             font-size: 1.3rem;
+            position: relative;
+            overflow: hidden;
         }
-        
+
+        .logo-circle::after {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: linear-gradient(45deg, transparent, rgba(255, 215, 0, 0.2), transparent);
+            transform: translateX(-100%);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        .logo-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .logo-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-title h1 {
+            color: var(--gold);
+            font-size: 1.8rem;
+            margin: 0;
+        }
+
+        .logo-subtitle {
+            color: var(--white);
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-top: 2px;
+        }
+
+        /* Navigation Links */
         .nav-links {
             display: flex;
+            gap: 2rem;
             list-style: none;
         }
-        
-        .nav-links li {
-            margin-left: 2rem;
-        }
-        
+
         .nav-links a {
             color: var(--white);
             text-decoration: none;
+            font-size: 1rem;
             position: relative;
-            padding-bottom: 5px;
+            padding: 5px 0;
             transition: color 0.3s;
         }
-        
-        .nav-links a:hover {
-            color: var(--gold);
-        }
-        
+
         .nav-links a::after {
             content: '';
             position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
+            bottom: -2px;
             left: 0;
-            background-color: var(--gold);
-            transition: width 0.3s;
-        }
-        
-        .nav-links a:hover::after {
             width: 100%;
+            height: 2px;
+            background-color: var(--gold);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
         }
-        
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a:hover::after {
+            transform: scaleX(1);
+        }
+
         .mobile-nav-toggle {
             display: none;
             background: none;
@@ -138,7 +162,7 @@
             font-size: 1.5rem;
             cursor: pointer;
         }
-        
+
         /* Hero Section */
         .hero {
             height: 100vh;
@@ -660,35 +684,194 @@
                 grid-template-columns: 1fr;
             }
         }
+        .petal {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(45deg, rgba(255, 215, 0, 0.15), rgba(255, 215, 0, 0.05));
+    border-radius: 50% 0 50% 50%;
+    pointer-events: none;
+    transform-style: preserve-3d;
+    animation: floatPetal 15s linear infinite;
+}
+
+@keyframes floatPetal {
+    0% {
+        transform: rotate(0deg) translateX(0) translateY(0) rotateX(0) rotateY(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: rotate(360deg) translateX(100vw) translateY(100vh) rotateX(360deg) rotateY(360deg);
+        opacity: 0;
+    }
+}
+
+/* Enhanced Logo */
+.logo {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    transition: transform 0.3s;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.logo-circle {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--dark-gray), #1a242f);
+    border: 3px solid transparent;
+    background-clip: padding-box;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.logo-circle::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: linear-gradient(45deg, var(--gold), #ffa500);
+    z-index: -1;
+    border-radius: 50%;
+    animation: rotateBorder 4s linear infinite;
+}
+
+.logo-text {
+    margin-left: 15px;
+}
+
+.logo-text h1 {
+    font-size: 2rem;
+    background: linear-gradient(45deg, var(--gold), #ffa500);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+}
+
+.logo-text h3 {
+    font-size: 0.9rem;
+    color: var(--white);
+    opacity: 0.8;
+    margin: 5px 0 0 0;
+}
+
+@keyframes rotateBorder {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Animated Navbar */
+.nav-links {
+    position: relative;
+}
+
+.nav-links::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    animation: borderFlow 3s ease-in-out infinite;
+}
+
+.nav-links::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    animation: borderFlow 3s ease-in-out infinite reverse;
+}
+
+@keyframes borderFlow {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+.nav-links a {
+    position: relative;
+    padding: 5px 0;
+}
+
+.nav-links a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--gold);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    transform-origin: right;
+}
+
+.nav-links a:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+</style>
+
     </style>
 </head>
 <body>
     <!-- Animated Background -->
-    <div class="animated-bg"></div>
+    <div class="animated-bg">
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </div>
     
     <!-- Navigation -->
     <nav>
-        <div class="logo">
-            <div class="logo-circle">HC</div>
-            <h1>Here Care</h1>
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-content">
+                    <div class="logo-title">
+                        <div class="logo-circle">HC</div>
+                        <h1>Hair Care</h1>
+                    </div>
+                    <div class="logo-subtitle">100% Pure & Organic</div>
+                </div>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            
+            <button class="mobile-nav-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#features">Features</a></li>
-            <li><a href="#gallery">Gallery</a></li>
-            <li><a href="#testimonials">Testimonials</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-        <button class="mobile-nav-toggle">
-            <i class="fas fa-bars"></i>
-        </button>
     </nav>
     
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>Revitalize Your <span>Hair</span> Naturally</h1>
-            <p>Give your hair the love it deserves with our 100% pure and organic hair oil. Infused with the goodness of nature's finest ingredients, this oil deeply nourishes your scalp, strengthens roots, and promotes healthy, voluminous hair.</p>
+            <p>Give your hair the love it deserves with our 100% pure and organic hair oil. Infused with the goodness of nature's finest ingredients, this oil deeply nourishes your scalp, strengthens roots, and promotes healthy voluminous hair.</p>
             <a href="#contact" class="cta-button">Shop Now</a>
         </div>
         <div class="hero-image">
@@ -696,7 +879,7 @@
                 <div class="bottle-cap"></div>
                 <div class="bottle">
                     <div class="label">
-                        <h3>Here Care</h3>
+                        <h3>Hair Care</h3>
                         <p>100% NATURAL & ORGANIC</p>
                         <p>Premium Hair Oil</p>
                     </div>
@@ -900,7 +1083,24 @@
                     mobileNavToggle.innerHTML = '<i class="fas fa-bars"></i>';
                 });
             });
-            
+            function createPetals() {
+    const container = document.querySelector('.animated-bg');
+    const petalCount = 20;
+
+    for (let i = 0; i < petalCount; i++) {
+        const petal = document.createElement('div');
+        petal.className = 'petal';
+        petal.style.left = Math.random() * 100 + 'vw';
+        petal.style.top = Math.random() * 100 + 'vh';
+        petal.style.animationDelay = Math.random() * 15 + 's';
+        petal.style.transform = `scale(${Math.random() * 0.5 + 0.5})`;
+        container.appendChild(petal);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    createPetals();
+});
             // Smooth scrolling
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
@@ -921,6 +1121,203 @@
                 }
             });
         });
+
+         // Create floating petals
+         function createPetals() {
+            const container = document.querySelector('.animated-bg');
+            const petalCount = 15;
+            
+            for (let i = 0; i < petalCount; i++) {
+                const petal = document.createElement('div');
+                petal.className = 'petal';
+                petal.style.left = Math.random() * 100 + 'vw';
+                petal.style.top = Math.random() * 100 + 'vh';
+                petal.style.animationDelay = Math.random() * 15 + 's';
+                petal.style.transform = `scale(${Math.random() * 0.5 + 0.5})`;
+                container.appendChild(petal);
+            }
+        }
+
+        // Mobile navigation toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            createPetals();
+
+            const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            mobileNavToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                const isOpen = navLinks.classList.contains('active');
+                mobileNavToggle.innerHTML = isOpen ? 
+                    '<i class="fas fa-times"></i>' : 
+                    '<i class="fas fa-bars"></i>';
+            });
+
+            // Close mobile menu when clicking links
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    mobileNavToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                });
+            });
+        });
     </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hair Care - Premium Organic Hair Oil</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --dark-gray: #36454F;
+            --gold: #FFD700;
+            --white: #FFFFFF;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark-gray);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* Enhanced Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, var(--dark-gray), #1a242f);
+            overflow: hidden;
+        }
+
+        .wave {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0.2;
+            background: 
+                radial-gradient(circle at 30% 40%, rgba(255, 215, 0, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 70% 60%, rgba(255, 215, 0, 0.08) 0%, transparent 30%);
+            animation: waveFloat 15s infinite linear;
+        }
+
+        .wave:nth-child(2) {
+            animation-delay: -5s;
+            opacity: 0.1;
+        }
+
+        .wave:nth-child(3) {
+            animation-delay: -10s;
+            opacity: 0.15;
+        }
+
+        @keyframes waveFloat {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-50%) rotate(360deg);
+            }
+        }
+
+        /* 3D Floating Petals */
+        .petal {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(45deg, rgba(255, 215, 0, 0.15), rgba(255, 215, 0, 0.05));
+            border-radius: 50% 0 50% 50%;
+            pointer-events: none;
+            transform-style: preserve-3d;
+            animation: floatPetal 15s linear infinite;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+        }
+
+        @keyframes floatPetal {
+            0% {
+                transform: rotate(0deg) translateX(0) translateY(0) rotateX(0) rotateY(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: rotate(360deg) translateX(100vw) translateY(100vh) rotateX(360deg) rotateY(360deg);
+                opacity: 0;
+            }
+        }
+
+        
+        /* Rest of your existing styles... */
+        /* (Keep all your existing styles for other sections like hero, features, gallery, etc.) */
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .nav-container {
+                flex-wrap: wrap;
+            }
+            
+            .logo-title h1 {
+                font-size: 1.5rem;
+            }
+            
+            .logo-subtitle {
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-nav-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(54, 69, 79, 0.95);
+                padding: 1rem 0;
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+        }
+
+        /* Keep your existing responsive styles... */
+    </style>
